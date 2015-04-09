@@ -9,6 +9,7 @@
 #import "AddTodoViewController.h"
 
 @interface AddTodoViewController ()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewButtonConstraint;
 
 @end
 
@@ -17,6 +18,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonTapped:)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonTapped:)];
+    
+    // キーボード表示時の通知を受け取る登録
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,5 +43,20 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)doneButtonTapped:(id)sender {
+    NSLog(@"done");
+}
+
+- (void)cancelButtonTapped:(id)sender {
+    NSLog(@"cancel");
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    NSLog(@"keyboard will show.");
+    CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    
+    self.textViewButtonConstraint.constant = keyboardFrame.size.height;
+}
 
 @end
