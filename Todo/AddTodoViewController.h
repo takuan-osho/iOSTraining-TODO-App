@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddTodoViewController : UIViewController
+@protocol AddTodoViewControllerDelegate <NSObject>
+- (void)addTodoViewControllerDoneButtonTapped:(NSString *)todo;
+@end
 
+@interface AddTodoViewController : UIViewController
+@property (nonatomic, weak) id<AddTodoViewControllerDelegate> delegate;
 @end

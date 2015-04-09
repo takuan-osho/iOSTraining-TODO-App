@@ -10,7 +10,7 @@
 
 @interface AddTodoViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewButtonConstraint;
-
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 @end
 
 @implementation AddTodoViewController
@@ -46,6 +46,8 @@
 
 - (void)doneButtonTapped:(id)sender {
     NSLog(@"done");
+    
+    [self.delegate addTodoViewControllerDoneButtonTapped:self.textView.text];
 }
 
 - (void)cancelButtonTapped:(id)sender {

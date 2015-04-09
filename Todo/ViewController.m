@@ -10,9 +10,9 @@
 #import "TodoTableViewCell.h"
 #import "AddTodoViewController.h"
 
-@interface ViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface ViewController () <UITableViewDataSource, UITableViewDelegate, AddTodoViewControllerDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *todo;
+@property (strong, nonatomic) NSMutableArray *todo;
 @property (strong, nonatomic) TodoTableViewCell *offscreenCell;
 @end
 
@@ -31,7 +31,7 @@
                   @"犬の散歩",
                   @"雨ニモマケズ 風ニモマケズ 雪ニモ夏ノ暑サニモマケヌ 丈夫ナカラダヲモチ 慾ハナク 決シテ瞋ラズ イツモシヅカニワラッテヰル 一日ニ玄米四合ト 味噌ト少シノ野菜ヲタベ アラユルコトヲ ジブンヲカンジョウニ入レズニ ヨクミキキシワカリ ソシテワスレズ",
                   @"ビールを飲む"
-                  ];
+                  ].mutableCopy;
 
     UINib *nib = [UINib nibWithNibName:@"TodoTableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"cell"];
@@ -82,6 +82,7 @@
 
 - (IBAction)addButtonTapped:(id)sender {
     AddTodoViewController *addTodoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddTodoViewController"];
+    addTodoViewController.delegate = self;
     
     // Navigation Controllerに含める
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:addTodoViewController];
@@ -89,6 +90,13 @@
     [self presentViewController:navigationController
                        animated:YES
                      completion:nil];
+}
+
+- (void)addTodoViewControllerDoneButtonTapped:(NSString *)todo {
+    NSLog(@"here!! %@", todo);
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.todo addObject:todo];
+    [self.tableView reloadData];
 }
 
 @end

@@ -115,6 +115,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="textView" destination="Gcr-hH-UXA" id="u7s-nf-sz8"/>
                         <outlet property="textViewButtonConstraint" destination="QvZ-Pz-eZb" id="9mz-G9-WLG"/>
                     </connections>
                 </viewController>
