@@ -40,6 +40,7 @@
     self.tableView.delegate = self;
 }
 
+
 - (void)viewDidLayoutSubviews
 {
     self.offscreenCell.bounds = CGRectMake(0, 0, CGRectGetWidth(self.tableView.bounds), CGRectGetHeight(self.tableView.bounds));
@@ -76,6 +77,10 @@
     TodoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     cell.todoLabel.text = self.todo[indexPath.row];
     return cell;
+}
+
+- (IBAction)addButtonTapped:(id)sender {
+    NSLog(@"Tapped");
 }
 
 @end
