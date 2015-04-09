@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "TodoTableViewCell.h"
+#import "AddTodoViewController.h"
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -80,7 +81,14 @@
 }
 
 - (IBAction)addButtonTapped:(id)sender {
-    NSLog(@"Tapped");
+    AddTodoViewController *addTodoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddTodoViewController"];
+    
+    // Navigation Controllerに含める
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:addTodoViewController];
+    
+    [self presentViewController:navigationController
+                       animated:YES
+                     completion:nil];
 }
 
 @end
