@@ -14,6 +14,8 @@
 		2D423DB01AB6E788008EF7E1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D423DAF1AB6E788008EF7E1 /* Images.xcassets */; };
 		2D423DB31AB6E788008EF7E1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D423DB11AB6E788008EF7E1 /* LaunchScreen.xib */; };
 		2D423DBF1AB6E788008EF7E1 /* TodoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D423DBE1AB6E788008EF7E1 /* TodoTests.m */; };
+		31280E451ADD366B00204D35 /* TodoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 31280E431ADD366B00204D35 /* TodoTableViewCell.m */; };
+		31280E461ADD366B00204D35 /* TodoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31280E441ADD366B00204D35 /* TodoTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,9 @@
 		2D423DB81AB6E788008EF7E1 /* TodoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D423DBD1AB6E788008EF7E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D423DBE1AB6E788008EF7E1 /* TodoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodoTests.m; sourceTree = "<group>"; };
+		31280E421ADD366B00204D35 /* TodoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoTableViewCell.h; sourceTree = "<group>"; };
+		31280E431ADD366B00204D35 /* TodoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoTableViewCell.m; sourceTree = "<group>"; };
+		31280E441ADD366B00204D35 /* TodoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodoTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +90,9 @@
 				2D423DA71AB6E788008EF7E1 /* AppDelegate.m */,
 				2D423DA91AB6E788008EF7E1 /* ViewController.h */,
 				2D423DAA1AB6E788008EF7E1 /* ViewController.m */,
+				31280E421ADD366B00204D35 /* TodoTableViewCell.h */,
+				31280E431ADD366B00204D35 /* TodoTableViewCell.m */,
+				31280E441ADD366B00204D35 /* TodoTableViewCell.xib */,
 				2D423DAC1AB6E788008EF7E1 /* Main.storyboard */,
 				2D423DAF1AB6E788008EF7E1 /* Images.xcassets */,
 				2D423DB11AB6E788008EF7E1 /* LaunchScreen.xib */,
@@ -202,6 +210,7 @@
 				2D423DAE1AB6E788008EF7E1 /* Main.storyboard in Resources */,
 				2D423DB31AB6E788008EF7E1 /* LaunchScreen.xib in Resources */,
 				2D423DB01AB6E788008EF7E1 /* Images.xcassets in Resources */,
+				31280E461ADD366B00204D35 /* TodoTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +231,7 @@
 				2D423DAB1AB6E788008EF7E1 /* ViewController.m in Sources */,
 				2D423DA81AB6E788008EF7E1 /* AppDelegate.m in Sources */,
 				2D423DA51AB6E788008EF7E1 /* main.m in Sources */,
+				31280E451ADD366B00204D35 /* TodoTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
