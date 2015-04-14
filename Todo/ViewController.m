@@ -19,6 +19,7 @@
     [super viewDidLoad];
     
     self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     
     self.todo = @[@"牛乳を買ってくる",
                   @"ビールを飲む",
@@ -35,12 +36,34 @@
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     
     UINib *nib = [UINib nibWithNibName:@"TodoTableViewCell" bundle:nil];
+    
+    self.offscreenCell = [nib instantiateWithOwner:nil options:nil][0];
+    
     [self.tableView registerNib:nib forCellReuseIdentifier:@"cell"];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidLayoutSubviews {
+    self.offscreenCell.bounds = CGRectMake(0, 0, CGRectGetWidth(self.tableView.bounds), CGRectGetHeight(self.tableView.bounds));
+    [self.offscreenCell setNeedsLayout];
+    [self.offscreenCell layoutIfNeeded];
+    self.offscreenCell.todoLabel.text = nil;
+    self.offscreenCell.todoLabel.preferredMaxLayoutWidth = CGRectGetWidth(self.offscreenCell.todoLabel.bounds);
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TodoTableViewCell *cell = self.offscreenCell;
+    
+    cell.todoLabel.text = self.todo[indexPath.row];
+    [cell setNeedsLayout];
+    [cell layoutIfNeeded];
+    CGSize size = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    
+    return ceil(size.height) + 1.0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
