@@ -76,7 +76,9 @@
 - (void)doneButtonTapped:(id)sender
 {
     // doneボタンがタップされた時にdelegateに通知する. 新しいToDoはTextViewのテキスト
-    [self.delegate addTodoViewController:self addTodoCompleted:self.textView.text];
+    NSDictionary *newTodo = @{@"title": self.textView.text,
+                              @"date": self.datePicker.date};
+    [self.delegate addTodoViewController:self addTodoCompleted:newTodo];
 }
 
 @end

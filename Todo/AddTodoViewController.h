@@ -27,5 +27,5 @@
  *  @param sender  ToDoを入力したViewController
  *  @param newTodo 入力されたToDoです. キャンセルの場合はnilになります.
  */
-- (void)addTodoViewController:(AddTodoViewController *)sender addTodoCompleted:(NSString *)newTodo;
+- (void)addTodoViewController:(AddTodoViewController *)sender addTodoCompleted:(NSDictionary *)newTodo;
 @end
