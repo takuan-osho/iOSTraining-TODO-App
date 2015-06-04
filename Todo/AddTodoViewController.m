@@ -96,6 +96,13 @@
                                                 // alertボタンタップ時のハンドラ
                                                 NSLog(@"ok button tapped");
                                             }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"NG1"
+                                              style:UIAlertActionStyleDefault
+                                            handler:nil]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"NG2"
+                                              style:UIAlertActionStyleDefault
+                                            handler:nil]];
+    
     
     [self presentViewController:alert animated:YES completion:nil];
 }
@@ -104,9 +111,20 @@
     NSString *title = todo[@"title"];
     NSDate *date = todo[@"date"];
     
-    if (title.length == 0) {
+    NSString *trimmedTitle = [title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if (date == nil) {
         return NO;
     }
+    
+    if ([date isKindOfClass:[NSDate class]] == NO) {
+        return NO;
+    }
+    
+    if (trimmedTitle.length == 0) {
+        return NO;
+    }
+    
     if ([date timeIntervalSinceNow] < 0.0) {
         return NO;
     }

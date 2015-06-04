@@ -14,6 +14,9 @@
 
 // ToDoの編集が完了したタイミングで呼ばれるdelgateのプロパティ
 @property (nonatomic, weak) id<AddTodoViewControllerDelegate> delegate;
+
+- (BOOL)isValidTodo:(NSDictionary *)todo;
+
 @end
 
 /**
