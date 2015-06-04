@@ -78,7 +78,40 @@
     // doneボタンがタップされた時にdelegateに通知する. 新しいToDoはTextViewのテキストと締切
     NSDictionary *newTodo = @{@"title": self.textView.text,
                               @"date": self.datePicker.date};
-    [self.delegate addTodoViewController:self addTodoCompleted:newTodo];
+    
+    if ([self isValidTodo:newTodo]) {
+        // delegateに伝播
+        [self.delegate addTodoViewController:self addTodoCompleted:newTodo];
+    } else {
+        
+    }
+    // 不正な場合なのでアラートを表示
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"TODOの追加に失敗しました"
+                                                                   message:@"本文が空か締め切り日時が過去になっています"
+                                                             preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK"
+                                              style:UIAlertActionStyleDefault
+                                            handler:^(UIAlertAction *action) {
+                                                // alertボタンタップ時のハンドラ
+                                                NSLog(@"ok button tapped");
+                                            }]];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (BOOL)isValidTodo:(NSDictionary *)todo {
+    NSString *title = todo[@"title"];
+    NSDate *date = todo[@"date"];
+    
+    if (title.length == 0) {
+        return NO;
+    }
+    if ([date timeIntervalSinceNow] < 0.0) {
+        return NO;
+    }
+    
+    return YES;
 }
 
 @end
